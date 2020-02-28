@@ -32,7 +32,6 @@ class OpenCasesViewSet(viewsets.ModelViewSet):
     http_method_names = ['get']
     serializer_class = ComplaintSerializer
     queryset = Complaint.objects.all()
-    print('hi')
 
     def list(self, request):
         # Get only the open complaints from the user's district
@@ -41,7 +40,7 @@ class OpenCasesViewSet(viewsets.ModelViewSet):
         user_district = user_profile.district
         openComplaints = self.queryset.filter(account__endswith=user_district).filter(closedate__isnull=True)
         serializer_instance = self.serializer_class(openComplaints, many=True)
-        return Response('hi')
+        return Response(serializer_instance.data, status=status.HTTP_200_OK)
 
 
 class ClosedCasesViewSet(viewsets.ModelViewSet):
@@ -58,7 +57,7 @@ class ClosedCasesViewSet(viewsets.ModelViewSet):
             account__endswith=user_district).filter(closedate__isnull=False)
         serializer_instance = self.serializer_class(
             closedComplaints, many=True)
-        return Response(serializer_instance, status=status.HTTP_200_OK)
+        return Response(serializer_instance.data, status=status.HTTP_200_OK)
 
 
 class TopComplaintTypeViewSet(viewsets.ModelViewSet):
