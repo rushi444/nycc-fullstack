@@ -22,7 +22,6 @@ export const Dashboard = () => {
     allComplaints: state.allComplaints,
   }));
 
-
   useEffect(() => {
     dispatch(requestOpenComplaints());
     dispatch(requestClosedComplaints());
@@ -64,20 +63,22 @@ export const Dashboard = () => {
       </div>
       <div className='all-complaints'>
         <h2>All Complaints</h2>
-        <tbody>
-          {tableheader()}
-          {allComplaints &&
-            allComplaints.map(complaint => (
-              <tr key={complaint.unique_key}>
-                <td>{complaint.account}</td>
-                <td>{complaint.complaint_type}</td>
-                <td>{complaint.descriptor}</td>
-                <td>{complaint.city}</td>
-                <td>{complaint.opendate}</td>
-                <td>{complaint.closedate}</td>
-              </tr>
-            ))}
-        </tbody>
+        <table>
+          <tbody>
+            {tableheader()}
+            {allComplaints &&
+              allComplaints.map(complaint => (
+                <tr key={complaint.unique_key}>
+                  <td>{complaint.account}</td>
+                  <td>{complaint.complaint_type}</td>
+                  <td>{complaint.descriptor}</td>
+                  <td>{complaint.city}</td>
+                  <td>{complaint.opendate}</td>
+                  <td>{complaint.closedate}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
