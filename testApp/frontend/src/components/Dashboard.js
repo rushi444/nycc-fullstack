@@ -10,7 +10,7 @@ import {
 } from '../redux/actions';
 import styled from 'styled-components';
 
-export const Dashboard = () => {
+export const Dashboard = props => {
   const dispatch = useDispatch();
 
   const {
@@ -75,12 +75,20 @@ export const Dashboard = () => {
     );
   };
 
+  const logout = () => {
+    localStorage.clear();
+    props.history.push('/');
+  };
+
   return (
     <div>
-      <h1 style={{ margin: '3% 0', fontSize: '3em' }}>
-        {userProfile &&
-          `Hello ${userProfile.full_name}, District ${userProfile.district}`}
-      </h1>
+      <AppTitleContainer>
+        <h1 style={{ margin: '3% 0', fontSize: '3em' }}>
+          {userProfile &&
+            `Hello ${userProfile.full_name}, District ${userProfile.district}`}
+        </h1>
+        <button onClick={logout}>Logout</button>
+      </AppTitleContainer>
       <ComplaintsContainer>
         <div className='open-complaints'>
           <h3>Open Complaints No.</h3>
@@ -201,4 +209,21 @@ button {
     outline: none; 
   }
 }
+`;
+
+const AppTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    height: 50px;
+    background-color: #009879;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    :focus {
+      outline: none;
+    }
+  }
 `;
