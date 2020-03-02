@@ -1,6 +1,6 @@
 # Notes
--yarn install, yarn start to start app
--There is a small login bug where you have to refresh the first time you log in(currently working on a fix)
+- yarn install, yarn start to start app
+- There is a small login bug where you have to refresh the first time you log in(currently working on a fix)
 
 # New York City Council Full Stack Coding Challenge
 You will have **1 full week** to complete this challenge starting when you received the challenge from our office. You can submit your challenge using our [Google Form](https://forms.gle/HXCXFiVvFAJ3WzAc7).
