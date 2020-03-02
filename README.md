@@ -1,5 +1,5 @@
 # Notes
-- yarn install, yarn start to start app
+- 'yarn install' to get front end dependencies
 - There is a small login bug where you have to refresh the first time you log in(currently working on a fix)
 
 # New York City Council Full Stack Coding Challenge
