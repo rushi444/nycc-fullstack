@@ -5,7 +5,8 @@ import {
   requestClosedComplaints,
   requestTopComplaints,
   requestAllComplaints,
-  requestPage,
+  requestAllComplaintsByConstituents,
+  requestUserProfile,
 } from '../redux/actions';
 import styled from 'styled-components';
 
@@ -17,25 +18,54 @@ export const Dashboard = () => {
     closedComplaints,
     topComplaints,
     allComplaints,
+    allComplaintsMode,
+    userProfile,
   } = useSelector(state => ({
     openComplaints: state.openComplaints,
     closedComplaints: state.closedComplaints,
     topComplaints: state.topComplaints,
     allComplaints: state.allComplaints,
+    allComplaintsMode: state.allComplaintsMode,
+    userProfile: state.userProfile,
   }));
-
 
   useEffect(() => {
     dispatch(requestOpenComplaints());
     dispatch(requestClosedComplaints());
     dispatch(requestTopComplaints());
     dispatch(requestAllComplaints());
+    dispatch(requestUserProfile());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const tableTitle = () => {
+    if (allComplaintsMode) {
+      return (
+        <TableTitleContainer>
+          <h2>All Complaints</h2>
+          <button
+            onClick={() => dispatch(requestAllComplaintsByConstituents())}>
+            Complaints By My Constituents
+          </button>
+        </TableTitleContainer>
+      );
+    } else {
+      return (
+        <TableTitleContainer>
+          <h2>Complaints By My Constituents</h2>
+          <button onClick={() => dispatch(requestAllComplaints())}>
+            All Complaints
+          </button>
+        </TableTitleContainer>
+      );
+    }
+  };
 
   const tableheader = () => {
     return (
       <TableHeader>
         <th>Account</th>
+        <th>Council Dist</th>
         <th>Complaint Type</th>
         <th>Description</th>
         <th>City</th>
@@ -45,12 +75,11 @@ export const Dashboard = () => {
     );
   };
 
-  allComplaints && console.log('yo', allComplaints);
-
   return (
     <div>
       <h1 style={{ margin: '3% 0', fontSize: '3em' }}>
-        New York City Counsil Complaints
+        {userProfile &&
+          `Hello ${userProfile.full_name}, District ${userProfile.district}`}
       </h1>
       <ComplaintsContainer>
         <div className='open-complaints'>
@@ -67,7 +96,7 @@ export const Dashboard = () => {
         </div>
       </ComplaintsContainer>
       <div className='all-complaints'>
-        <h2 style={{ fontSize: '2em', margin: '2%' }}>All Complaints</h2>
+        {tableTitle()}
         <ComplaintTable>
           <tbody>
             {tableheader()}
@@ -75,6 +104,7 @@ export const Dashboard = () => {
               allComplaints.map(complaint => (
                 <TableRows key={complaint.unique_key}>
                   <td>{complaint.account}</td>
+                  <td>{complaint.council_dist}</td>
                   <td>{complaint.complaint_type}</td>
                   <td>{complaint.descriptor}</td>
                   <td>{complaint.city}</td>
@@ -149,5 +179,26 @@ td {
 }
 :last-of-type {
   border-bottom: 2px solid #009879; 
+}
+`;
+
+const TableTitleContainer = styled.div`
+display: flex; 
+justify-content: space-between; 
+padding 0 2%; 
+align-items: center; 
+h2 {
+  font-size: 2em
+}
+button {
+  height: 50px; 
+  background-color: #009879;
+  color: white;
+  font-size: 1em; 
+  border: none; 
+  border-radius: 5px; 
+  :focus {
+    outline: none; 
+  }
 }
 `;

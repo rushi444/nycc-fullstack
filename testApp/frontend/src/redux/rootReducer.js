@@ -4,6 +4,8 @@ import {
   RECIEVE_CLOSED_COMPLAINTS,
   RECIEVE_TOP_COMPLAINTS,
   RECIEVE_ALL_COMPLAINTS,
+  RECIEVE_ALL_COMPLAINTS_BY_CONSTITUENTS,
+  RECIEVE_USER_PROFILE,
 } from './actions';
 
 const initialState = {
@@ -12,6 +14,8 @@ const initialState = {
   closedComplaints: null,
   topComplaints: null,
   allComplaints: null,
+  allComplaintsMode: true,
+  userProfile: null
 };
 
 export const rootReducer = (state = initialState, { type, data }) => {
@@ -41,7 +45,19 @@ export const rootReducer = (state = initialState, { type, data }) => {
       return {
         ...state,
         allComplaints: data.data,
+        allComplaintsMode: true
       };
+    case RECIEVE_ALL_COMPLAINTS_BY_CONSTITUENTS:
+      return {
+        ...state,
+        allComplaints: data.data,
+        allComplaintsMode: false
+      };
+    case RECIEVE_USER_PROFILE:
+      return {
+        ...state, 
+        userProfile: data.data
+      }
     default:
       return state;
   }

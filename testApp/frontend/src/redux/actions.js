@@ -58,3 +58,27 @@ export const recieveAllComplaints = data => ({
   type: RECIEVE_ALL_COMPLAINTS,
   data,
 });
+
+export const REQUEST_ALL_COMPLAINTS_BY_CONSTITUENTS = 'REQUEST_ALL_COMPLAINTS_BY_CONSTITUENTS';
+export const RECIEVE_ALL_COMPLAINTS_BY_CONSTITUENTS = 'RECIEVE_ALL_COMPLAINTS_BY_CONSTITUENTS';
+
+export const requestAllComplaintsByConstituents = () => ({
+  type: REQUEST_ALL_COMPLAINTS_BY_CONSTITUENTS,
+});
+
+export const recieveAllComplaintsByConstituents = data => ({
+  type: RECIEVE_ALL_COMPLAINTS_BY_CONSTITUENTS,
+  data,
+});
+
+export const REQUEST_USER_PROFILE= 'REQUEST_USER_PROFILE';
+export const RECIEVE_USER_PROFILE = 'RECIEVE_USER_PROFILE';
+
+export const requestUserProfile = () => ({
+  type: REQUEST_USER_PROFILE,
+});
+
+export const recieveUserProfile = data => ({
+  type: RECIEVE_USER_PROFILE,
+  data,
+});

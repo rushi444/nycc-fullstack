@@ -6,8 +6,8 @@ import styled from 'styled-components';
 export const Login = (props) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState({
-    username: 'rsalamanca',
-    password: 'salamanca-17',
+    username: 'bperkins',
+    password: 'perkins-9',
   });
 
   const {isAuthenticated} = useSelector(state => ({
