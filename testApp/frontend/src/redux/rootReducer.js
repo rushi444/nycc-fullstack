@@ -20,7 +20,7 @@ export const rootReducer = (state = initialState, { type, data }) => {
       localStorage.setItem('token', data.data.token);
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticated: !state.isAuthenticated,
       };
     case RECIEVE_OPEN_COMPLAINTS:
       return {

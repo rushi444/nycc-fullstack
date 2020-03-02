@@ -10,7 +10,7 @@ import {
   recieveTopComplaints,
   REQUEST_TOP_COMPLAINTS,
   REQUEST_ALL_COMPLAINTS,
-  recieveAllComplaints
+  recieveAllComplaints,
 } from './actions';
 import {
   postLogin,
@@ -65,7 +65,6 @@ function* getTopComplaints(action) {
       console.log(err);
     }
   }
-
 export default function* mySaga() {
   yield takeLatest(REQUEST_AUTH, getAuthToken);
   yield takeLatest(REQUEST_OPEN_COMPLAINTS, getOpenComplaints);
