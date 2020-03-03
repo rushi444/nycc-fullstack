@@ -6,6 +6,7 @@ import {
   RECIEVE_ALL_COMPLAINTS,
   RECIEVE_ALL_COMPLAINTS_BY_CONSTITUENTS,
   RECIEVE_USER_PROFILE,
+  RECIEVE_LOGOUT,
 } from './actions';
 
 const initialState = {
@@ -58,6 +59,11 @@ export const rootReducer = (state = initialState, { type, data }) => {
         ...state, 
         userProfile: data.data
       }
+    case RECIEVE_LOGOUT: 
+    return {
+      ...state, 
+      isAuthenticated: false
+    }
     default:
       return state;
   }

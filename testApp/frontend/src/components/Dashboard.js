@@ -7,6 +7,7 @@ import {
   requestAllComplaints,
   requestAllComplaintsByConstituents,
   requestUserProfile,
+  requestLogout,
 } from '../redux/actions';
 import styled from 'styled-components';
 
@@ -76,6 +77,7 @@ export const Dashboard = props => {
   };
 
   const logout = () => {
+    dispatch(requestLogout())
     localStorage.clear();
     props.history.push('/');
   };

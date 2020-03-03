@@ -82,3 +82,14 @@ export const recieveUserProfile = data => ({
   type: RECIEVE_USER_PROFILE,
   data,
 });
+
+export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
+export const RECIEVE_LOGOUT = 'RECIEVE_LOGOUT'
+
+export const requestLogout = () => ({
+  type: REQUEST_LOGOUT
+})
+
+export const recieveLogout = () => ({
+  type: RECIEVE_LOGOUT
+})

@@ -15,6 +15,8 @@ import {
   REQUEST_ALL_COMPLAINTS_BY_CONSTITUENTS,
   recieveUserProfile,
   REQUEST_USER_PROFILE,
+  REQUEST_LOGOUT,
+  recieveLogout
 } from './actions';
 import {
   postLogin,
@@ -89,6 +91,10 @@ function* getUserData() {
   }
 }
 
+function* logout() {
+yield put(recieveLogout())
+}
+
 export default function* mySaga() {
   yield takeLatest(REQUEST_AUTH, getAuthToken);
   yield takeLatest(REQUEST_OPEN_COMPLAINTS, getOpenComplaints);
@@ -100,4 +106,5 @@ export default function* mySaga() {
     getAllComplaintsByConstituents,
   );
   yield takeLatest(REQUEST_USER_PROFILE, getUserData);
+  yield takeLatest(REQUEST_LOGOUT, logout)
 }
