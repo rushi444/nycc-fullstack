@@ -77,7 +77,7 @@ export const Dashboard = props => {
   };
 
   const logout = () => {
-    dispatch(requestLogout())
+    dispatch(requestLogout());
     localStorage.clear();
     props.history.push('/');
   };
