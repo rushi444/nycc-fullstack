@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-const token = localStorage.getItem('token');
-const config = {
-  headers: {
-    Authorization: `Token ${token}`,
-  },
-};
-
 export const postLogin = async credentials => {
   const res = await axios.post('http://127.0.0.1:8000/login/', {
     username: credentials.username,
@@ -16,6 +9,12 @@ export const postLogin = async credentials => {
 };
 
 export const getOpenComplaintsData = async () => {
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  };
   try {
     const res = await axios.get(
       'http://127.0.0.1:8000/api/complaints/openCases/',
@@ -28,62 +27,96 @@ export const getOpenComplaintsData = async () => {
 };
 
 export const getClosedComplaintsData = async () => {
-    try {
-      const res = await axios.get(
-        'http://127.0.0.1:8000/api/complaints/closedCases/',
-        config,
-      );
-      return res;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  
-  export const getTopComplaintsData = async () => {
-    try {
-      const res = await axios.get(
-        'http://127.0.0.1:8000/api/complaints/topComplaints/',
-        config,
-      );
-      return res;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  
-  export const getAllComplaintsData = async () => {
-    try {
-      const res = await axios.get(
-        'http://127.0.0.1:8000/api/complaints/',
-        config,
-      );
-      return res;
-    } catch (err) {
-      console.log(err);
-    }
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
   };
 
-  export const getAllComplaintsByConstituentsData = async () => {
-    try {
-      const res = await axios.get(
-        'http://127.0.0.1:8000/api/complaints/complaintsByConstituents/',
-        config,
-      );
-      return res;
-    } catch (err) {
-      console.log(err);
-    }
+  try {
+    const res = await axios.get(
+      'http://127.0.0.1:8000/api/complaints/closedCases/',
+      config,
+    );
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getTopComplaintsData = async () => {
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
   };
 
-  export const getUserProfileData = async () => {
-    try {
-      const res = await axios.get(
-        'http://127.0.0.1:8000/api/complaints/userProfile/',
-        config,
-      );
-      return res;
-    } catch (err) {
-      console.log(err);
-    }
+  try {
+    const res = await axios.get(
+      'http://127.0.0.1:8000/api/complaints/topComplaints/',
+      config,
+    );
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getAllComplaintsData = async () => {
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
   };
-  
+
+  try {
+    const res = await axios.get(
+      'http://127.0.0.1:8000/api/complaints/',
+      config,
+    );
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getAllComplaintsByConstituentsData = async () => {
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  };
+
+  try {
+    const res = await axios.get(
+      'http://127.0.0.1:8000/api/complaints/complaintsByConstituents/',
+      config,
+    );
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getUserProfileData = async () => {
+  const token = localStorage.getItem('token');
+  const config = {
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  };
+
+  try {
+    const res = await axios.get(
+      'http://127.0.0.1:8000/api/complaints/userProfile/',
+      config,
+    );
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
