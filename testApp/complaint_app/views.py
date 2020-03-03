@@ -85,7 +85,6 @@ class ComplaintByConstituents(viewsets.ModelViewSet):
     queryset = Complaint.objects.all()
 
     def list(self, request):
-        # Get all complaints from the user's district
         user = self.request.user
         user_profile = user.userprofile
         user_district = getUserDistrict(user_profile.district)
@@ -100,7 +99,6 @@ class GetUserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
 
     def list(self, request):
-        # Get all complaints from the user's district
         user = self.request.user
         user_profile = user.userprofile
         serializer_instance = self.serializer_class(user_profile)
