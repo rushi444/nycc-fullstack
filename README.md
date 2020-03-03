@@ -1,5 +1,6 @@
 # Notes
 - 'yarn install' to get front end dependencies
+- There's a bug displaying in the console that I'm still trying to figure out (WIP)
 
 # New York City Council Full Stack Coding Challenge
 You will have **1 full week** to complete this challenge starting when you received the challenge from our office. You can submit your challenge using our [Google Form](https://forms.gle/HXCXFiVvFAJ3WzAc7).
